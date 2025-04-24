@@ -5,14 +5,18 @@ from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+import requests
 
 options = Options()
-options.add_argument('--headless=new')
-driver = webdriver.Chrome(options=options)
+options.add_argument("--headless=new")  # Run headless if needed
+driver = webdriver.Remote(
+    command_executor="http://localhost:4444/wd/hub",
+    options=options
+)
 last_request = time()
 
 def get_selenium_wrapper(url, xpath):
-    global last_request
+    global last_request,driver
     # Verify last request was 3 seconds ago
     if 0 < time() - last_request < 3:
         sleep(3)
