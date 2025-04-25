@@ -6,9 +6,9 @@ from unidecode import unidecode
 import re
 
 try:
-    from utils import get_game_suffix, remove_accents
-    from players import get_stats 
-    from request_utils import get_wrapper
+    from .utils import get_game_suffix, remove_accents
+    from .players import get_stats 
+    from .request_utils import get_wrapper
 except:
     from basketball_reference_scraper.utils import get_game_suffix, remove_accents
     from basketball_reference_scraper.players import get_stats
